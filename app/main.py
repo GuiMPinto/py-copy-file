@@ -4,5 +4,7 @@ def copy_file(command: str) -> None:
     if arquivo_original == arquivo_novo:
         return
 
-    with open(arquivo_original, "r"), open(arquivo_novo, "w"):
-        arquivo_novo.write(arquivo_original.read())
+    with open(arquivo_original, "r") as f1, open(
+         arquivo_novo, "w") as f2:
+
+        f2.write(f1.read())
