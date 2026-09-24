@@ -1,10 +1,14 @@
 def copy_file(command: str) -> None:
-    arquivo_original = command.split()[1]
-    arquivo_novo = command.split()[2]
-    if arquivo_original == arquivo_novo:
+
+    if len(command.split()) == 3 and command.split()[0] == "cp": 
+        arquivo_original = command.split()[1]
+        arquivo_novo = command.split()[2]
+        if arquivo_original == arquivo_novo:
+            return
+
+        with open(arquivo_original, "r") as f1, open(
+                  arquivo_novo, "w") as f2:
+            f2.write(f1.read())
+
+    else:
         return
-
-    with open(arquivo_original, "r") as f1, open(
-         arquivo_novo, "w") as f2:
-
-        f2.write(f1.read())
