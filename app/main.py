@@ -6,8 +6,8 @@ def copy_file(command: str) -> None:
         if arquivo_original == arquivo_novo:
             return
 
-        with open(arquivo_original, "r") as f1, open(arquivo_novo, "w") as f2:
-            f2.write(f1.read())
-
-    else:
-        return
+        try:
+            with open(arquivo_original, "r") as f1, open(arquivo_novo, "w") as f2:
+                f2.write(f1.read())
+        except FileNotFoundError:
+            return
